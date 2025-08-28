@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price History & Prediction</title>
+    <!-- Use Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 2rem;
+        }
+        .chart-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+<div class="container bg-white rounded-2xl shadow-xl overflow-hidden p-6 md:p-8">
+    <header class="mb-6 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+            Product Price Tracker
+        </h1>
+        <p class="text-gray-500">
+            Historical price analysis and future prediction.
+        </p>
+    </header>
+
+    <!-- Key metrics section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="bg-gray-50 rounded-xl p-4 flex items-center shadow-sm">
+            <span class="text-blue-500 mr-3 text-2xl">📊</span>
+            <div>
+                <div class="text-gray-400 text-sm">Current Price</div>
+                <div class="font-semibold text-lg text-gray-800">{{ current_price }}</div>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4 flex items-center shadow-sm">
+            <span class="text-blue-500 mr-3 text-2xl">📈</span>
+            <div>
+                <div class="text-gray-400 text-sm">Predicted Price (30 Days)</div>
+                <div class="font-semibold text-lg text-gray-800">{{ predicted_price }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart display section -->
+    <div class="chart-container relative rounded-2xl">
+        <h2 class="text-xl font-bold text-gray-800 mb-4">Price History & Prediction</h2>
+        <img src="{{ url_for('serve_image', filename='price_chart.png') }}" alt="Price History Chart" class="w-full h-auto rounded-lg">
+    </div>
+
+    <!-- Information section -->
+    <div class="mt-8 text-sm text-gray-500 text-center">
+        <p>This data is based on a simplified time series model (ARIMA) trained on the Walmart Sales dataset.</p>
+        <p>This is a simulated demo. Actual predictions would use more advanced models and real-time data.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

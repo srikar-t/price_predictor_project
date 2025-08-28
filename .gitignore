@@ -1,0 +1,12 @@
+# Ignore virtual environments
+venv/
+.venv/
+env/
+
+# Ignore cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore model files if you don’t want to commit large files
+*.pkl
